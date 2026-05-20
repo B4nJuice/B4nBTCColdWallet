@@ -11,7 +11,7 @@ class WalletManager:
 
         self.wallets: list[Wallet] = []
 
-    def init_new_wallet(self, kwargs: dict[Any]) -> Wallet:
+    def init_new_wallet(self, kwargs: dict[Any] = {}) -> Wallet:
         new_wallet = Wallet(*kwargs)
         self.wallets.append(new_wallet)
 
@@ -20,8 +20,8 @@ class WalletManager:
     def get_balance(self, wallet: Wallet) -> int:
         return self.service.getbalance(wallet.address)
 
-    def get_bitcoin_price(self, vs_curr: str = "usd") -> float:
+    def get_bitcoin_price(self, vs_curr: str | list[str] = ['usd', 'eur']) -> float:
         return self.coin_gecko.get_price(
             ids='bitcoin',
             vs_currencies=vs_curr
-        )
+        ).get('bitcoin')
