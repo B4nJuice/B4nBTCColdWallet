@@ -1,0 +1,9 @@
+[project]
+name = "b4n-btc-cold-wallet"
+version = "0.1.0"
+description = "Simple Bitcoin cold wallet"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+	"bip-utils==2.12.1"
+]
