@@ -6,8 +6,6 @@ from bip_utils import (
     Bip44Changes,
 )
 
-from bitcoinlib.services.services import Service
-
 from .utils.logger import Logger
 from .utils.errors import WalletCreationError
 
@@ -25,9 +23,6 @@ class Wallet:
         self.init_wallet()
 
         Logger.log_info(f"Wallet successfully initialized ({self.address})")
-
-        self.service: Service = Service()
-
 
     def create_new_wallet(self) -> None:
         self.phrase: str = Bip39MnemonicGenerator().FromWordsNumber(24)
@@ -52,6 +47,3 @@ class Wallet:
 
         self.private_key: str = self.account.PrivateKey().ToWif()
         self.address: str = self.account.PublicKey().ToAddress()
-
-    def get_balance(self) -> int:
-        return self.service.getbalance(self.address)
