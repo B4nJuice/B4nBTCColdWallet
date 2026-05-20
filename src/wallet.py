@@ -4,9 +4,6 @@ from bip_utils import (
     Bip84,
     Bip84Coins,
     Bip44Changes,
-    WifDecoder,
-    IPrivateKey,
-    IPublicKey
 )
 from .utils.logger import Logger
 
